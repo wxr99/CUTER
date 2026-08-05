@@ -1,0 +1,54 @@
+# arch
+arch: tresnet
+excel_path: expe_voc_main.xlsx
+
+# datasets
+root_dir: ./datasets/
+dataset_name: voc
+image_size: 224
+
+# training
+base_lr: 0.00004
+lr: 0.00004
+weight_decay: 0.0001
+epochs: 20
+end_epoch: 20
+batch_size: 64
+num_workers: 1
+
+one_session: False
+
+# pseudo label
+pseudo_label: False
+thre: 0.8
+
+# Model
+model_name: tresnet_m
+pretrained_path: ./pretrained_models/tresnet_m_224_21k.pth
+freeze_bockbone: False
+# incremental
+total_classes: 20
+base_classes: 4
+task_size: 4
+finetune_fc: False
+only_seen: False
+# replay
+replay: True
+num_protos: 2
+sample_method: herding
+fix_budget: False
+buffer_size: 0
+
+# POD distillation loss
+kd_loss: pod_spatial
+lambda_c: 5
+lambda_f: 180
+
+resume: 
+old_dataset_path: 
+low_range: 
+
+# outputs
+logger_dir: 
+tensorboard_dir: 
+model_save_path: 

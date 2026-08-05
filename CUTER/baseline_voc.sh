@@ -1,0 +1,1 @@
+python -m torch.distributed.launch --nproc_per_node 1 --master_port=21000 main.py --options configs/baseline/multi_resnet_base_voc.yaml --output_name MICIL_RES_BASE

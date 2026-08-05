@@ -1,0 +1,69 @@
+# arch
+arch: vits_eval
+excel_path: 'output_results.xlsx'
+
+# datasets
+root_dir: ./datasets/
+dataset_name: voc
+image_size: 224
+
+# training
+base_lr: 0.00001
+lr: 0.00001
+weight_decay: 0.0001
+epochs: 1
+end_epoch: 1
+batch_size: 12
+mem_size: 6
+num_workers: 8
+
+one_session: False
+
+# pseudo label
+pseudo_label: False
+thre: 0.8
+
+# Model
+model_name: vitb
+pretrained_path: './pretrained_models/vit-b-300ep.pth.tar'
+do_bottleneck_head: False
+
+# Class Attention
+embed_dim: 768
+depth: 6
+num_heads: 8 # origin 12, but indivisible for 2048
+use_pos_embed: True
+use_head_div: False
+freeze_task: [old_task_tokens, old_heads]
+
+# incremental
+total_classes: 20
+base_classes: 4
+task_size: 4
+finetune_fc: False
+only_seen: False
+# replay
+replay: True
+num_protos: 0
+sample_method: herding
+fix_budget: True
+buffer_size: 1000
+
+freeze_bockbone: False
+# POD distillation loss
+lambda_c: 0
+lambda_f_TDL: 80
+#The hyper-paramete B0-CX: 80 B40-CX:300   
+lambda_f: 0
+alpha: 0.1
+beta: 0.1
+temperature: 1
+
+resume: 
+old_dataset_path:
+low_range: 
+
+# outputs
+logger_dir: logs/21K_resneter
+tensorboard_dir: tensorboard/21K_vits_er
+model_save_path: saved_models/21K_vits_er
